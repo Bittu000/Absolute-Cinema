@@ -1,0 +1,252 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #0B0D12;
+    --surface: #151922;
+    --elevated: #202531;
+    --text: #F5F5F5;
+    --muted: #9CA3AF;
+    --accent: #F59E0B;
+    --accent-hover: #FBBF24;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+.navbar {
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--elevated);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    color: var(--accent);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+    transition: color 0.2s ease;
+}
+
+.menu-btn {
+    background-color: transparent;
+    font-size: 1.5rem;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    display: none;
+}
+
+.hero {
+    text-align: center;
+    padding: 5rem 0 3rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+}
+
+.hero p {
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+}
+
+.search-input {
+    background-color: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--elevated);
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: 8px 0 0 8px;
+}
+
+.search-btn {
+    background-color: var(--accent);
+    color: #111;
+    border: none;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0 8px 8px 0;
+}
+
+.search-btn:hover {
+    background-color: var(--accent-hover);
+    transition: 0.2s ease;
+}
+
+.movies {
+    padding: 2rem 0 3rem;
+}
+
+.pop {
+    margin-bottom: 1rem;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.movie-card {
+    background-color: var(--surface);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.movie-card img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+}
+
+.movie-info {
+    padding: 1rem;
+}
+
+.movie-info h3 {
+    margin-bottom: 0.15rem;
+    color: var(--text);
+}
+
+.m-rate {
+    color: var(--accent);
+    margin-bottom: 0.15rem;
+}
+
+.r-year {
+    color: var(--muted);
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    transition: 0.2s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .movie-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero {
+        padding: 3rem 0 2rem
+    }
+
+    .search-bar {
+        flex-direction: column;
+        width: 90%;
+        margin: 0 auto;
+        gap: 0.5rem;
+    }
+
+    .search-btn {
+        border-radius: 10px;
+    }
+
+    .search-input {
+        border-radius: 10px;
+    }
+
+    .search-bar input,
+    .search-bar button {
+        width: 100%;
+    }
+
+    .search-bar input {
+        border-radius: 8px 8px 0 0;
+    }
+
+    .search-bar button {
+        border-radius: 0 0 8px 8px;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .movie-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .movie-card {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .pop {
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+    color: var(--muted);
+    border-top: 1px solid var(--elevated);
+}
