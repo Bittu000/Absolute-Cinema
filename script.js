@@ -34,13 +34,18 @@ menu_btn.addEventListener("click", () => {
    ========================================================= */
 
 // Gets the movie IDs saved in localStorage.
+// Convert all IDs to numbers so every page uses
+// the same data type.
 const getFavorites = () => {
-    return JSON.parse(localStorage.getItem("favorites")) || [];
+    return (
+        JSON.parse(localStorage.getItem("favorites")) || []
+    ).map(Number);
 };
+
 
 // Checks whether a movie is currently a favorite.
 const isMovieFavorite = (movieId, favorites) => {
-    return favorites.includes(movieId.toString());
+    return favorites.includes(Number(movieId));
 };
 
 
@@ -87,7 +92,7 @@ const createMovieCard = (movie, favorites) => {
 
 /* =========================================================
    Display Movies
-========================================================= */
+   ========================================================= */
 
 // Displays an array of movies inside the movie grid.
 const displayMovies = (movies) => {
@@ -106,7 +111,7 @@ const displayMovies = (movies) => {
 
 /* =========================================================
    Get Popular Movies
-========================================================= */
+   ========================================================= */
 
 const getPopularMovies = async () => {
 
@@ -128,7 +133,7 @@ getPopularMovies();
 
 /* =========================================================
    Search Movies
-========================================================= */
+   ========================================================= */
 
 const searchMovies = async () => {
 
@@ -153,6 +158,7 @@ const searchMovies = async () => {
     movies_heading.textContent =
         `Search Results for "${query}"`;
 
+
     // Show the empty-search state when no movies are found.
     if (data.results.length === 0) {
 
@@ -175,7 +181,7 @@ const searchMovies = async () => {
 
 /* =========================================================
    Search Button
-========================================================= */
+   ========================================================= */
 
 search_btn.addEventListener("click", () => {
     searchMovies();
@@ -184,7 +190,7 @@ search_btn.addEventListener("click", () => {
 
 /* =========================================================
    Search With Enter Key
-========================================================= */
+   ========================================================= */
 
 search_input.addEventListener("keydown", (event) => {
 
@@ -197,7 +203,7 @@ search_input.addEventListener("keydown", (event) => {
 
 /* =========================================================
    Movie Card Clicks
-========================================================= */
+   ========================================================= */
 
 movie_grid.addEventListener("click", (event) => {
 
@@ -217,7 +223,9 @@ movie_grid.addEventListener("click", (event) => {
         // Prevent the card click from opening the details page.
         event.stopPropagation();
 
-        const movieId = card.dataset.movieId;
+        // Convert the ID to a number so it matches
+        // the IDs returned by getFavorites().
+        const movieId = Number(card.dataset.movieId);
 
         let favorites = getFavorites();
 
@@ -235,7 +243,9 @@ movie_grid.addEventListener("click", (event) => {
         // Remove movie from favorites.
         else {
 
-            favorites = favorites.filter((id) => id !== movieId);
+            favorites = favorites.filter(
+                (id) => id !== movieId
+            );
 
             event.target.classList.remove("favorited");
             event.target.textContent = "♡";
