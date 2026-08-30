@@ -4,95 +4,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Absolute Cinema</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <!-- =========================
+         Navigation Bar
+    ========================== -->
 
     <header>
         <nav class="navbar">
+
             <div class="nav-container">
+
                 <h1 class="logo">Absolute Cinema</h1>
+
                 <div class="nav-links">
-                    <a href="#">Home</a>
-                    <a href="#">Favorites</a>
+                    <a href="index.html">Home</a>
+                    <a href="favorites.html">Favorites</a>
                 </div>
-                <button class="menu-btn">☰</button>
+
+                <!-- Visible on smaller screens -->
+                <button class="menu-btn" aria-label="Open navigation menu">
+                    ☰
+                </button>
+
             </div>
+
         </nav>
     </header>
 
 
+    <!-- =========================
+         Main Content
+    ========================== -->
+
     <main>
 
+        <!-- Hero / Search Section -->
+
         <section class="hero">
+
             <div class="container">
+
                 <h1>Find Your Next Favorite Movie</h1>
+
                 <p>Discover movies worth watching.</p>
+
                 <div class="search-bar">
-                    <input class="search-input" type="text" placeholder="Search movies...">
-                    <button class="search-btn">search</button>
+
+                    <input
+                        class="search-input"
+                        type="text"
+                        placeholder="Search movies..."
+                        aria-label="Search movies"
+                    >
+
+                    <button class="search-btn">
+                        Search
+                    </button>
+
                 </div>
+
             </div>
+
         </section>
 
+
+        <!-- =========================
+             Movie Results
+        ========================== -->
+
         <section class="movies">
+
             <div class="container">
-                <h2 class="pop">Popular Movies</h2>
-                <div class="movie-grid">
-                    <!--<div class="movie-card">
-                        <img src="Interstellar.jpg" alt="Interstellar">
-                        <div class="movie-info">
-                            <h3>Interstellar</h3>
-                            <p class="m-rate">⭐ 8.6</p>
-                            <p class="r-year">2014</p>
-                        </div>
-                    </div>
-                    <div class="movie-card">
-                        <img src="Interstellar.jpg" alt="Interstellar">
-                        <div class="movie-info">
-                            <h3>Interstellar</h3>
-                            <p class="m-rate">⭐ 8.6</p>
-                            <p class="r-year">2014</p>
-                        </div>
-                    </div>
-                    <div class="movie-card">
-                        <img src="Interstellar.jpg" alt="Interstellar">
-                        <div class="movie-info">
-                            <h3>Interstellar</h3>
-                            <p class="m-rate">⭐ 8.6</p>
-                            <p class="r-year">2014</p>
-                        </div>
-                    </div>
-                    <div class="movie-card">
-                        <img src="Interstellar.jpg" alt="Interstellar">
-                        <div class="movie-info">
-                            <h3>Interstellar</h3>
-                            <p class="m-rate">⭐ 8.6</p>
-                            <p class="r-year">2014</p>
-                        </div>
-                    </div>
-                    <div class="movie-card">
-                        <img src="Interstellar.jpg" alt="Interstellar">
-                        <div class="movie-info">
-                            <h3>Interstellar</h3>
-                            <p class="m-rate">⭐ 8.6</p>
-                            <p class="r-year">2014</p>
-                        </div>
-                    </div>-->
-                </div>
+
+                <!-- JavaScript changes this heading during a search -->
+                <h2 class="pop" id="movies-heading">
+                    Popular Movies
+                </h2>
+
+                <!-- JavaScript inserts movie cards here -->
+                <div class="movie-grid"></div>
+
             </div>
+
         </section>
 
     </main>
+
+
+    <!-- =========================
+         Footer
+    ========================== -->
 
     <footer>
         <p>© 2026 Absolute Cinema</p>
     </footer>
 
+
+    <!-- JavaScript -->
     <script src="script.js"></script>
+
 </body>
 
 </html>

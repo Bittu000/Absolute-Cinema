@@ -19,8 +19,6 @@ body {
     background: var(--background);
     color: var(--text);
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
 
@@ -80,108 +78,48 @@ body {
 
 
 /* =========================
-   Containers
+   Favorites
 ========================= */
 
-.container {
+.favorites-container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 40px 0;
 }
 
+.favorites-container h2 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
 
-/* =========================
-   Hero
-========================= */
-
-.hero {
+.empty-favorites {
+    display: none;
     text-align: center;
-    padding: 45px 0 15px;
+    padding: 4rem 1rem;
 }
 
-.hero h1 {
-    font-size: 2.8rem;
-    margin-bottom: 0.6rem;
-}
-
-.hero p {
+.empty-favorites-icon {
+    font-size: 4rem;
     color: var(--muted);
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.75rem;
+}
+
+.empty-favorites h3 {
+    color: var(--text);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.empty-favorites p {
+    color: var(--muted);
+    margin: 0;
 }
 
 
 /* =========================
-   Search
+   Movie Grid
 ========================= */
-
-.search-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-}
-
-.search-input {
-    width: 400px;
-    height: 44px;
-
-    background-color: var(--surface);
-    color: var(--text);
-
-    border: 1px solid var(--elevated);
-    border-radius: 8px 0 0 8px;
-
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-
-    outline: none;
-}
-
-.search-input:focus {
-    border-color: var(--accent);
-}
-
-.search-input::placeholder {
-    color: var(--muted);
-}
-
-.search-btn {
-    height: 44px;
-
-    background-color: var(--accent);
-    color: #fff;
-
-    border: none;
-    border-radius: 0 8px 8px 0;
-
-    padding: 0.75rem 1rem;
-
-    cursor: pointer;
-
-    font-size: 1rem;
-    font-weight: 600;
-
-    transition: background-color 0.2s ease;
-}
-
-.search-btn:hover {
-    background-color: var(--accent-hover);
-}
-
-
-/* =========================
-   Movies
-========================= */
-
-.movies {
-    padding: 1rem 0 3rem;
-    flex: 1;
-}
-
-.pop {
-    margin-bottom: 1.25rem;
-    color: var(--text);
-}
 
 .movie-grid {
     display: grid;
@@ -189,13 +127,17 @@ body {
     gap: 1.25rem;
 }
 
+
+/* =========================
+   Movie Card
+========================= */
+
 .movie-card {
     background-color: var(--surface);
-    border: 1px solid transparent;
     border-radius: 10px;
-
     overflow: hidden;
     position: relative;
+    border: 1px solid transparent;
 
     transition:
         transform 0.2s ease,
@@ -223,7 +165,6 @@ body {
     justify-content: center;
 
     text-align: center;
-
     background: var(--elevated);
     color: var(--muted);
 
@@ -243,39 +184,16 @@ body {
 
 
 /* =========================
-   Movie Info
-========================= */
-
-.movie-info {
-    padding: 1rem;
-}
-
-.movie-info h3 {
-    margin-bottom: 0.15rem;
-    color: var(--text);
-}
-
-.m-rate {
-    color: var(--accent);
-    margin-bottom: 0.15rem;
-}
-
-.r-year {
-    color: var(--muted);
-}
-
-
-/* =========================
    Favorite Button
 ========================= */
 
 .favorite-btn {
-    position: absolute;
-    right: 12px;
-    bottom: 12px;
+    display: block;
 
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
+
+    margin: 10px 12px 12px auto;
 
     border: none;
     border-radius: 50%;
@@ -298,59 +216,11 @@ body {
 
 .favorite-btn.favorited {
     background-color: var(--accent);
-    color: #fff;
+    color: white;
 }
 
 .favorite-btn.favorited:hover {
     background-color: var(--accent-hover);
-}
-
-
-/* =========================
-   No Search Results
-========================= */
-
-.no-results {
-    grid-column: 1 / -1;
-
-    text-align: center;
-
-    padding: 1.5rem 1rem 3rem;
-}
-
-.no-results-icon {
-    width: 52px;
-    height: 52px;
-
-    border: 3px solid var(--muted);
-    border-radius: 50%;
-
-    margin: 0 auto 1.25rem;
-
-    position: relative;
-}
-
-.no-results-icon::after {
-    content: "";
-
-    position: absolute;
-
-    width: 20px;
-    height: 3px;
-
-    background-color: var(--muted);
-
-    right: -14px;
-    bottom: -7px;
-
-    transform: rotate(45deg);
-
-    border-radius: 2px;
-}
-
-.no-results h3 {
-    color: var(--text);
-    font-size: 1.5rem;
 }
 
 
@@ -375,7 +245,13 @@ footer {
 
 @media (max-width: 768px) {
 
-    /* Navbar */
+    .movie-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav-container {
+        width: 90%;
+    }
 
     .nav-links {
         display: none;
@@ -410,47 +286,6 @@ footer {
     .menu-btn {
         display: block;
     }
-
-
-    /* Movies */
-
-    .movie-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .movie-card {
-        width: 100%;
-        max-width: 320px;
-        margin: 0 auto;
-    }
-
-
-    /* Hero */
-
-    .hero {
-        padding: 3rem 0 2rem;
-    }
-
-    .hero h1 {
-        font-size: 2rem;
-    }
-
-
-    /* Search */
-
-    .search-bar {
-        width: 90%;
-        margin: 0 auto;
-    }
-
-    .search-input {
-        width: 100%;
-        min-width: 0;
-    }
-
-    .search-btn {
-        flex-shrink: 0;
-    }
 }
 
 
@@ -459,22 +294,6 @@ footer {
 ========================= */
 
 @media (max-width: 480px) {
-
-    .logo {
-        font-size: 1.3rem;
-        white-space: nowrap;
-    }
-
-    .nav-container {
-        width: 90%;
-    }
-
-    .container {
-        width: 90%;
-    }
-
-
-    /* Movies */
 
     .movie-grid {
         grid-template-columns: 1fr;
@@ -486,32 +305,13 @@ footer {
         margin: 0 auto;
     }
 
-    .pop {
-        text-align: center;
-        margin-bottom: 0.5rem;
+    .favorites-container {
+        width: 90%;
     }
 
-
-    /* Hero */
-
-    .hero h1 {
-        font-size: 1.8rem;
-    }
-
-
-    /* Search */
-
-    .search-bar {
-        width: 100%;
-    }
-
-    .search-input {
-        width: 100%;
-        min-width: 0;
-    }
-
-    .search-btn {
-        flex-shrink: 0;
+    .logo {
+        font-size: 1.3rem;
+        white-space: nowrap;
     }
 }
 
